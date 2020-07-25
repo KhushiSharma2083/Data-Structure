@@ -1,0 +1,51 @@
+package link;
+public class link
+{ 
+static class Node 
+{ 
+	int data; 
+	Node next; 
+}; 
+
+static Node push(Node a, int d) 
+{ 
+	Node n = new Node(); 
+	n.data = d ;
+	n.next = (a); 
+	(a) = n; 
+	return a; 
+} 
+static double avgOfNodes(Node head) 
+{ 
+	if (head == null) 
+		return -1; 
+
+	int count = 0; 
+	int sum = 0; 
+	double avg = 0.0; 
+
+	Node current = head; 
+	while (current != null) 
+	{ 
+		count++; 
+		sum += current.data; 
+		current = current.next; 
+	} 
+
+	avg = (double)sum / count; 
+
+	return avg; 
+} 
+public static void main(String args[]) 
+{ 
+	Node head = null; 
+	head=push(head, 7); 
+	head=push(head, 6); 
+	head=push(head, 8); 
+	head=push(head, 4); 
+	head=push(head, 1); 
+
+	System.out.println("Average of nodes = " + avgOfNodes(head)); 
+} 
+} 
+
