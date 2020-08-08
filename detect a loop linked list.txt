@@ -1,0 +1,51 @@
+public class Node {
+	
+    Node next;
+    String data;
+    
+    public Node(String data) {
+	super();
+	this.data = data;
+    }
+
+public class LoopInLinkedList {
+	
+	public static void main(String[] args) {
+		Node head = new Node("1");
+		head.next = new Node("2");
+		head.next.next = new Node("3");
+		head.next.next.next = new Node("4");
+		head.next.next.next.next = new Node("5");
+		head.next.next.next.next.next = new Node("6");
+		head.next.next.next.next.next.next = new Node("7");
+		head.next.next.next.next.next.next.next = head.next.next;
+		findLoop(head);
+	}
+	
+	private static void findLoop(Node head) {
+		Node slow = head;
+		Node fast = head.next.next;
+		while(slow != null) {
+			if(slow == fast) {
+				System.out.println("Loop Found in Linked List");
+				int lengthLoop = findLength(slow, fast);
+				break;
+			}else {
+				slow = slow.next;
+				fast = fast.next.next;
+			}
+		}
+	}
+
+	private static int findLength(Node firstPtr, Node secondPtr) {
+		secondPtr = secondPtr.next;
+		int lengthLoop = 1;
+		while(secondPtr != firstPtr) {
+			lengthLoop++;
+			secondPtr = secondPtr.next;
+		}
+		System.out.println("Length of Loop is "+lengthLoop);
+		return lengthLoop;
+	}
+
+}}
